@@ -20,10 +20,10 @@ const board = []; // array of rows, each row is array of cells  (board[y][x])
 
 function makeBoard() {
   debugger;
-  for (let row = 0; row < HEIGHT; row++){
+  for (let rowIndex = 0; rowIndex < HEIGHT; rowIndex++){
     let boardRow = []
 
-    for (let column = 0; column < WIDTH; column ++){
+    for (let columnIndex = 0; columnIndex < WIDTH; columnIndex ++){
       boardRow.push(null);
     }
 
@@ -51,26 +51,21 @@ function makeHtmlBoard() {
   }
   htmlBoard.append(top);
 
-  // dynamically creates the main part of html board
-  // uses HEIGHT to create table rows
-  // uses WIDTH to create table cells for each row
+  // These loops create the table rows elements and cells
+  // and assigns coordinate ids to them, then appends to HTML
   for (let y = 0; y < HEIGHT; y++) {
-    // Create a table row element and assign to a "row" variable
+
     const row = document.createElement("tr");
     row.setAttribute("id", `row-${y}`);
 
     for (let x = 0; x < WIDTH; x++) {
-      // Create a table cell element and assign to a "cell" variable
+
       const cell = document.createElement("td");
-
-      // add an id, c-y-x, to the above table cell element
       cell.setAttribute("id", `c-${y}-${x}`);
-      //   (for example, for the cell at y=2, x=3, the ID should be "c-2-3")
 
-      // append the table cell to the table row
       row.append(cell);
     }
-    // append the row to the html board
+
     htmlBoard.append(row);
   }
   console.log('exiting htmlBoard')
