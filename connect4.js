@@ -75,13 +75,28 @@ function makeHtmlBoard() {
  *    (return null if filled) */
 
 function findSpotForCol(x) {
-  // TODO: write the real version of this, rather than always returning 5
-  return 5;
+  for (let yCoord = (HEIGHT-1); yCoord >= 0; yCoord--){
+    if (board[yCoord][x] === null){
+      return yCoord;
+    }
+  }
+  return null;
 }
+
 
 /** placeInTable: update DOM to place piece into HTML table of board */
 
 function placeInTable(y, x) {
+  var piece = document.createElement("div");
+  piece.classList.add("piece")
+  piece.classList.add(`p${currPlayer}`)
+
+  let tableCell = document.getElementById(`c-${y}-${x}`)
+
+  tableCell.append(piece)
+
+
+
   // TODO: make a div and insert into correct table cell
 }
 
